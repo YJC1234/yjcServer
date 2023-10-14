@@ -1,0 +1,9 @@
+/home/yjc/yjcServer/build/CMakeFiles/edit_cache.dir
+/home/yjc/yjcServer/build/CMakeFiles/rebuild_cache.dir
+/home/yjc/yjcServer/build/yjcServer/CMakeFiles/edit_cache.dir
+/home/yjc/yjcServer/build/yjcServer/CMakeFiles/rebuild_cache.dir
+/home/yjc/yjcServer/build/yjcServer/thread/CMakeFiles/edit_cache.dir
+/home/yjc/yjcServer/build/yjcServer/thread/CMakeFiles/rebuild_cache.dir
+/home/yjc/yjcServer/build/tests/CMakeFiles/test.dir
+/home/yjc/yjcServer/build/tests/CMakeFiles/edit_cache.dir
+/home/yjc/yjcServer/build/tests/CMakeFiles/rebuild_cache.dir
