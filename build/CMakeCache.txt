@@ -214,6 +214,9 @@ Project_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/yjc/yjcServer
 
+//The directory containing a CMake configuration file for pthread.
+pthread_DIR:PATH=pthread_DIR-NOTFOUND
+
 //The directory containing a CMake configuration file for spdlog.
 spdlog_DIR:PATH=/home/yjc/yjcServer/yjcServer/spdlog/build
 
@@ -331,7 +334,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

@@ -1,7 +1,17 @@
 [
 {
   "directory": "/home/yjc/yjcServer/build",
-  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o tests/CMakeFiles/test.dir/test.cpp.o -c /home/yjc/yjcServer/tests/test.cpp",
+  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/thread/include -I/home/yjc/yjcServer/yjcServer/logConfig/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o -c /home/yjc/yjcServer/yjcServer/thread/src/Thread.cpp",
+  "file": "/home/yjc/yjcServer/yjcServer/thread/src/Thread.cpp"
+},
+{
+  "directory": "/home/yjc/yjcServer/build",
+  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/logConfig/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o yjcServer/logConfig/CMakeFiles/logConfig.dir/src/LogConfig.cpp.o -c /home/yjc/yjcServer/yjcServer/logConfig/src/LogConfig.cpp",
+  "file": "/home/yjc/yjcServer/yjcServer/logConfig/src/LogConfig.cpp"
+},
+{
+  "directory": "/home/yjc/yjcServer/build",
+  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/logConfig/include -I/home/yjc/yjcServer/yjcServer/thread/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o tests/CMakeFiles/test.dir/test.cpp.o -c /home/yjc/yjcServer/tests/test.cpp",
   "file": "/home/yjc/yjcServer/tests/test.cpp"
 }
 ]
