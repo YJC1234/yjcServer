@@ -8,6 +8,6 @@
 /home/yjc/yjcServer/build/yjcServer/logConfig/CMakeFiles/logConfig.dir
 /home/yjc/yjcServer/build/yjcServer/logConfig/CMakeFiles/edit_cache.dir
 /home/yjc/yjcServer/build/yjcServer/logConfig/CMakeFiles/rebuild_cache.dir
-/home/yjc/yjcServer/build/tests/CMakeFiles/test.dir
+/home/yjc/yjcServer/build/tests/CMakeFiles/thread_test.dir
 /home/yjc/yjcServer/build/tests/CMakeFiles/edit_cache.dir
 /home/yjc/yjcServer/build/tests/CMakeFiles/rebuild_cache.dir

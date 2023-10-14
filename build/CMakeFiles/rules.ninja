@@ -60,7 +60,7 @@ rule CXX_STATIC_LIBRARY_LINKER__logConfig_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__test_Debug
+rule CXX_COMPILER__thread_test_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = /usr/local/bin/g++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -70,7 +70,7 @@ rule CXX_COMPILER__test_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__test_Debug
+rule CXX_EXECUTABLE_LINKER__thread_test_Debug
   command = $PRE_LINK && /usr/local/bin/g++ $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -82,6 +82,15 @@ rule CXX_EXECUTABLE_LINKER__test_Debug
 rule RERUN_CMAKE
   command = /usr/bin/cmake --regenerate-during-build -S/home/yjc/yjcServer -B/home/yjc/yjcServer/build
   description = Re-running CMake...
+  generator = 1
+
+
+#############################################
+# Rule for re-checking globbed directories.
+
+rule VERIFY_GLOBS
+  command = /usr/bin/cmake -P /home/yjc/yjcServer/build/CMakeFiles/VerifyGlobs.cmake
+  description = Re-checking globbed directories...
   generator = 1
 
 

@@ -1,13 +1,11 @@
 # ninja log v5
 2880	2924	1697290650973654772	yjcServer/logConfig/liblogConfig.a	43d1a5d5f65248a1
-4836	4884	1697290652929618377	yjcServer/thread/libmy_thread.a	97d3f94af42f39cc
-1	4836	1697290652885619194	yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o	2d3fdc392caafb6c
-1	2880	1697290650929655594	yjcServer/logConfig/CMakeFiles/logConfig.dir/src/LogConfig.cpp.o	3a459603d1546b69
-1	2866	1697290650917655818	tests/CMakeFiles/test.dir/test.cpp.o	8c763b71dc202e8c
-4884	4976	1697290653025616593	tests/test	4d3a705dc22d1088
-1	2470	1697290746260041110	tests/CMakeFiles/test.dir/test.cpp.o	8c763b71dc202e8c
-2471	2561	1697290746352039700	tests/test	4d3a705dc22d1088
-1	4421	1697291240787338675	yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o	2d3fdc392caafb6c
 4421	4474	1697291240839338399	yjcServer/thread/libmy_thread.a	97d3f94af42f39cc
+1	4421	1697291240787338675	yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o	2d3fdc392caafb6c
+1	2880	1697290650929655594	yjcServer/logConfig/CMakeFiles/logConfig.dir/src/LogConfig.cpp.o	3a459603d1546b69
 1	4502	1697291240867338251	tests/CMakeFiles/test.dir/test.cpp.o	8c763b71dc202e8c
 4502	4601	1697291240967337723	tests/test	4d3a705dc22d1088
+0	12	1697291721890453924	/home/yjc/yjcServer/build/CMakeFiles/cmake.verify_globs	7c87c2951c0328bf
+0	10	0	/home/yjc/yjcServer/build/CMakeFiles/cmake.verify_globs	7c87c2951c0328bf
+1	4639	1697291768550480910	tests/CMakeFiles/thread_test.dir/thread_test.cpp.o	9d77f9ed43496565
+4639	4750	1697291768662480977	tests/thread_test	f8375df6701e2a77

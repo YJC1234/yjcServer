@@ -11,7 +11,7 @@
 },
 {
   "directory": "/home/yjc/yjcServer/build",
-  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/logConfig/include -I/home/yjc/yjcServer/yjcServer/thread/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o tests/CMakeFiles/test.dir/test.cpp.o -c /home/yjc/yjcServer/tests/test.cpp",
-  "file": "/home/yjc/yjcServer/tests/test.cpp"
+  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/logConfig/include -I/home/yjc/yjcServer/yjcServer/thread/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o tests/CMakeFiles/thread_test.dir/thread_test.cpp.o -c /home/yjc/yjcServer/tests/thread_test.cpp",
+  "file": "/home/yjc/yjcServer/tests/thread_test.cpp"
 }
 ]

@@ -1,3 +1,8 @@
-add_executable(test test.cpp)
+file(GLOB_RECURSE srcs CONFIGURE_DEPENDS *.cpp)
 
-target_link_libraries(test PRIVATE spdlog::spdlog logConfig my_thread)
+foreach(onesrc ${srcs})
+    get_filename_component(onename ${onesrc} NAME_WE)
+    add_executable(${onename} ${onesrc})
+    target_link_libraries(${onename} PRIVATE spdlog::spdlog logConfig my_thread)
+endforeach(onesrc ${srcs})
+
