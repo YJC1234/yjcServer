@@ -5,6 +5,7 @@
 
 namespace yjcServer {
 
+//----------线程---------
 static thread_local Thread*     t_thread = nullptr;
 static thread_local std::string t_thread_name = "UNKNOWN";
 
@@ -49,6 +50,8 @@ Thread::Thread(std::function<void()>& cb, const std::string&& name)
 void Thread::init() {
     try {
         m_thread = std::make_unique<std::thread>(&Thread::run, this);
+        std::unique_lock<std::mutex> lock(m_mutex);
+        m_cv.wait(lock, [this] { return m_started.load(); });
     }
     catch (const std::system_error& e) {
         spdlog::get("system_logger")
@@ -79,8 +82,20 @@ void Thread::run() {
     t_thread_name = m_name;
     m_id = GetThreadId();
     pthread_setname_np(pthread_self(), m_name.substr(0, 15).c_str());
-
+    m_started = true;
+    m_cv.notify_one();
     m_cb();
+}
+
+//--------自旋锁----------
+void Spinlock::lock() {
+    while (m_flag.test_and_set(std::memory_order_acquire)) {
+        std::this_thread::yield();
+    }
+}
+
+void Spinlock::unlock() {
+    m_flag.clear(std::memory_order_release);
 }
 
 }  // namespace yjcServer
