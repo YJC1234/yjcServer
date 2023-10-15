@@ -11,8 +11,11 @@ namespace yjcServer {
 class Thread {
 public:
     using ptr = std::shared_ptr<Thread>;
+
     Thread(std::function<void()> cb, const std::string& name);
     Thread(std::function<void()> cb, const std::string&& rname);
+    Thread(std::function<void()>& cb, const std::string& rname);
+    Thread(std::function<void()>& cb, const std::string&& rname);
 
     ~Thread();
 
@@ -32,16 +35,17 @@ public:
 
 private:
     Thread(const Thread&) = delete;
-    Thread(const Thread&&) = delete;
-    Thread& operator()(const Thread&) = delete;
+    Thread(Thread&&) = delete;
+    Thread& operator=(Thread&&) = delete;
 
-    static void* run(void* arg);
+    void init();  //减少重复代码
+    void run();
 
 private:
-    pid_t                 m_id;
-    pthread_t             m_thread;
-    std::string           m_name;
-    std::function<void()> m_cb;
+    pid_t                        m_id;
+    std::unique_ptr<std::thread> m_thread;
+    std::string                  m_name;
+    std::function<void()>        m_cb;
 };
 
 }  // namespace yjcServer

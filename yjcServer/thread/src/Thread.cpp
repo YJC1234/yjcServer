@@ -27,63 +27,60 @@ void Thread::SetName(const std::string& name) {
 }
 //----构造------
 Thread::Thread(std::function<void()> cb, const std::string& name)
-    : m_cb(cb), m_name(name) {
-    if (m_name.empty()) {
-        m_name = "UNKNOWN";
+    : m_cb(std::move(cb)),
+      m_name(name.empty() ? "UNKNOWN" : std::move(name)) {
+    init();
+}
+Thread::Thread(std::function<void()> cb, const std::string&& name)
+    : m_cb(std::move(cb)), m_name(name.empty() ? "UNKNOWN" : name) {
+    init();
+}
+
+Thread::Thread(std::function<void()>& cb, const std::string& name)
+    : m_cb(std::move(cb)),
+      m_name(name.empty() ? "UNKNOWN" : std::move(name)) {
+    init();
+}
+Thread::Thread(std::function<void()>& cb, const std::string&& name)
+    : m_cb(std::move(cb)), m_name(name.empty() ? "UNKNOWN" : name) {
+    init();
+}
+
+void Thread::init() {
+    try {
+        m_thread = std::make_unique<std::thread>(&Thread::run, this);
     }
-    int rt = pthread_create(&m_thread, nullptr, &Thread::run, this);
-    if (rt) {
+    catch (const std::system_error& e) {
         spdlog::get("system_logger")
-            ->error("pthread_create fail, rt = {}, name = {}", rt, m_name);
-        throw std::logic_error("pthread_create error.");
+            ->error("thread create fail : {} ,name = {}", e.what(), m_name);
+        throw;
     }
 }
-Thread::Thread(std::function<void()> cb, const std::string&& rname)
-    : m_cb(cb), m_name(rname) {
-    if (m_name.empty()) {
-        m_name = "UNKNOWN";
-    }
-    int rt = pthread_create(&m_thread, nullptr, &Thread::run, this);
-    if (rt) {
-        spdlog::get("system_logger")
-            ->error("pthread_create fail, rt = {}, name = {}", rt, m_name);
-        throw std::logic_error("pthread_create error.");
-    }
-}
+
 //---构造结束------
 
 Thread::~Thread() {
-    if (m_thread) {
-        pthread_detach(m_thread);
+    if (m_thread->joinable()) {
+        m_thread->detach();
     }
 }
 
 void Thread::join() {
-    if (m_thread) {
-        int rt = pthread_join(m_thread, nullptr);
-        if (rt) {
-            spdlog::get("system_logger")
-                ->error("pthread_join fail, rt = {}, name = {}", rt,
-                        m_name);
-            throw std::logic_error("pthread_join error.");
-        }
-        m_thread = 0;
+    if (m_thread->joinable()) {
+        m_thread->join();
+    } else {
+        spdlog::get("system_logger")
+            ->error("thread join fail ,name = {}.", m_name);
     }
 }
 
-void* Thread::run(void* arg) {
-    Thread* thread = (Thread*)arg;
-    t_thread = thread;
-    t_thread_name = thread->m_name;
-    // pthread_create只会写pthread_t，对于pid_t需要自己再传
-    thread->m_id = GetThreadId();
-    pthread_setname_np(pthread_self(),
-                       thread->m_name.substr(0, 15).c_str());
+void Thread::run() {
+    t_thread = this;
+    t_thread_name = m_name;
+    m_id = GetThreadId();
+    pthread_setname_np(pthread_self(), m_name.substr(0, 15).c_str());
 
-    std::function<void()> cb;
-    cb.swap(thread->m_cb);
-
-    cb();
-    return 0;
+    m_cb();
 }
+
 }  // namespace yjcServer
