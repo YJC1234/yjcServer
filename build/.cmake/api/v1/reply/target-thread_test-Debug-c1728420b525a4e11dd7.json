@@ -59,7 +59,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/yjc/yjcServer/yjcServer/logConfig/include"
+					"path" : "/home/yjc/yjcServer/yjcServer/Config/include"
 				},
 				{
 					"backtrace" : 2,
@@ -94,7 +94,7 @@
 		},
 		{
 			"backtrace" : 2,
-			"id" : "logConfig::@0ce798c978bcaa69520e"
+			"id" : "Config::@e173d0cbbb68b64ffda4"
 		}
 	],
 	"id" : "thread_test::@a44f0ac069e85531cdee",
@@ -117,7 +117,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "yjcServer/logConfig/liblogConfig.a",
+				"fragment" : "yjcServer/Config/libConfig.a",
 				"role" : "libraries"
 			},
 			{
@@ -127,12 +127,16 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "yjcServer/logConfig/liblogConfig.a",
+				"fragment" : "yjcServer/Config/libConfig.a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
 				"fragment" : "../yjcServer/spdlog/build/libspdlog.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lyaml-cpp",
 				"role" : "libraries"
 			}
 		],

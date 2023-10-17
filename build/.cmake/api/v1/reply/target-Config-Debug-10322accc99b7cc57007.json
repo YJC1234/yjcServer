@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "yjcServer/logConfig/liblogConfig.a"
+			"path" : "yjcServer/Config/libConfig.a"
 		}
 	],
 	"backtrace" : 1,
@@ -17,7 +17,7 @@
 		],
 		"files" : 
 		[
-			"yjcServer/logConfig/CMakeLists.txt"
+			"yjcServer/Config/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -27,19 +27,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 2,
+				"line" : 5,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 5,
+				"line" : 8,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 4,
+				"line" : 7,
 				"parent" : 0
 			}
 		]
@@ -67,7 +67,7 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/home/yjc/yjcServer/yjcServer/logConfig/include"
+					"path" : "/home/yjc/yjcServer/yjcServer/Config/include"
 				},
 				{
 					"backtrace" : 2,
@@ -90,13 +90,13 @@
 			]
 		}
 	],
-	"id" : "logConfig::@0ce798c978bcaa69520e",
-	"name" : "logConfig",
-	"nameOnDisk" : "liblogConfig.a",
+	"id" : "Config::@e173d0cbbb68b64ffda4",
+	"name" : "Config",
+	"nameOnDisk" : "libConfig.a",
 	"paths" : 
 	{
-		"build" : "yjcServer/logConfig",
-		"source" : "yjcServer/logConfig"
+		"build" : "yjcServer/Config",
+		"source" : "yjcServer/Config"
 	},
 	"sourceGroups" : 
 	[
@@ -120,18 +120,18 @@
 	[
 		{
 			"backtrace" : 1,
-			"path" : "yjcServer/logConfig/include/logConfig/LogConfig.h",
+			"path" : "yjcServer/Config/include/Config/Config.h",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "yjcServer/logConfig/include/logConfig/yjcServer.h",
+			"path" : "yjcServer/Config/include/Config/yjcServer.h",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "yjcServer/logConfig/src/LogConfig.cpp",
+			"path" : "yjcServer/Config/src/Config.cpp",
 			"sourceGroupIndex" : 1
 		}
 	],

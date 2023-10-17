@@ -1,4 +1,4 @@
-#include <logConfig/LogConfig.h>
+#include <Config/Config.h>
 #include <spdlog/spdlog.h>
 #include <thread/Thread.h>
 #include <thread/th_helper.h>

@@ -103,13 +103,13 @@ build yjcServer/rebuild_cache: phony yjcServer/CMakeFiles/rebuild_cache.util
 #############################################
 # Order-only phony target for my_thread
 
-build cmake_object_order_depends_target_my_thread: phony || cmake_object_order_depends_target_logConfig
+build cmake_object_order_depends_target_my_thread: phony || cmake_object_order_depends_target_Config
 
 build yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o: CXX_COMPILER__my_thread_Debug /home/yjc/yjcServer/yjcServer/thread/src/Thread.cpp || cmake_object_order_depends_target_my_thread
   DEFINES = -DSPDLOG_COMPILED_LIB
   DEP_FILE = yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/yjc/yjcServer/yjcServer/thread/include -I/home/yjc/yjcServer/yjcServer/logConfig/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include
+  INCLUDES = -I/home/yjc/yjcServer/yjcServer/thread/include -I/home/yjc/yjcServer/yjcServer/Config/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include
   OBJECT_DIR = yjcServer/thread/CMakeFiles/my_thread.dir
   OBJECT_FILE_DIR = yjcServer/thread/CMakeFiles/my_thread.dir/src
 
@@ -121,7 +121,7 @@ build yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o: CXX_COMPILER__
 #############################################
 # Link the static library yjcServer/thread/libmy_thread.a
 
-build yjcServer/thread/libmy_thread.a: CXX_STATIC_LIBRARY_LINKER__my_thread_Debug yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o || yjcServer/logConfig/liblogConfig.a
+build yjcServer/thread/libmy_thread.a: CXX_STATIC_LIBRARY_LINKER__my_thread_Debug yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o || yjcServer/Config/libConfig.a
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = yjcServer/thread/CMakeFiles/my_thread.dir
   POST_BUILD = :
@@ -158,60 +158,60 @@ build yjcServer/thread/rebuild_cache: phony yjcServer/thread/CMakeFiles/rebuild_
 # =============================================================================
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target logConfig
+# Object build statements for STATIC_LIBRARY target Config
 
 
 #############################################
-# Order-only phony target for logConfig
+# Order-only phony target for Config
 
-build cmake_object_order_depends_target_logConfig: phony || yjcServer/logConfig/CMakeFiles/logConfig.dir
+build cmake_object_order_depends_target_Config: phony || yjcServer/Config/CMakeFiles/Config.dir
 
-build yjcServer/logConfig/CMakeFiles/logConfig.dir/src/LogConfig.cpp.o: CXX_COMPILER__logConfig_Debug /home/yjc/yjcServer/yjcServer/logConfig/src/LogConfig.cpp || cmake_object_order_depends_target_logConfig
+build yjcServer/Config/CMakeFiles/Config.dir/src/Config.cpp.o: CXX_COMPILER__Config_Debug /home/yjc/yjcServer/yjcServer/Config/src/Config.cpp || cmake_object_order_depends_target_Config
   DEFINES = -DSPDLOG_COMPILED_LIB
-  DEP_FILE = yjcServer/logConfig/CMakeFiles/logConfig.dir/src/LogConfig.cpp.o.d
+  DEP_FILE = yjcServer/Config/CMakeFiles/Config.dir/src/Config.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/yjc/yjcServer/yjcServer/logConfig/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include
-  OBJECT_DIR = yjcServer/logConfig/CMakeFiles/logConfig.dir
-  OBJECT_FILE_DIR = yjcServer/logConfig/CMakeFiles/logConfig.dir/src
+  INCLUDES = -I/home/yjc/yjcServer/yjcServer/Config/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include
+  OBJECT_DIR = yjcServer/Config/CMakeFiles/Config.dir
+  OBJECT_FILE_DIR = yjcServer/Config/CMakeFiles/Config.dir/src
 
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target logConfig
+# Link build statements for STATIC_LIBRARY target Config
 
 
 #############################################
-# Link the static library yjcServer/logConfig/liblogConfig.a
+# Link the static library yjcServer/Config/libConfig.a
 
-build yjcServer/logConfig/liblogConfig.a: CXX_STATIC_LIBRARY_LINKER__logConfig_Debug yjcServer/logConfig/CMakeFiles/logConfig.dir/src/LogConfig.cpp.o
+build yjcServer/Config/libConfig.a: CXX_STATIC_LIBRARY_LINKER__Config_Debug yjcServer/Config/CMakeFiles/Config.dir/src/Config.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = yjcServer/logConfig/CMakeFiles/logConfig.dir
+  OBJECT_DIR = yjcServer/Config/CMakeFiles/Config.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = yjcServer/logConfig/liblogConfig.a
-  TARGET_PDB = logConfig.a.dbg
+  TARGET_FILE = yjcServer/Config/libConfig.a
+  TARGET_PDB = Config.a.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
-build yjcServer/logConfig/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/yjc/yjcServer/build/yjcServer/logConfig && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+build yjcServer/Config/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/yjc/yjcServer/build/yjcServer/Config && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
-build yjcServer/logConfig/edit_cache: phony yjcServer/logConfig/CMakeFiles/edit_cache.util
+build yjcServer/Config/edit_cache: phony yjcServer/Config/CMakeFiles/edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build yjcServer/logConfig/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/yjc/yjcServer/build/yjcServer/logConfig && /usr/bin/cmake --regenerate-during-build -S/home/yjc/yjcServer -B/home/yjc/yjcServer/build
+build yjcServer/Config/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/yjc/yjcServer/build/yjcServer/Config && /usr/bin/cmake --regenerate-during-build -S/home/yjc/yjcServer -B/home/yjc/yjcServer/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build yjcServer/logConfig/rebuild_cache: phony yjcServer/logConfig/CMakeFiles/rebuild_cache.util
+build yjcServer/Config/rebuild_cache: phony yjcServer/Config/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -225,13 +225,13 @@ build yjcServer/logConfig/rebuild_cache: phony yjcServer/logConfig/CMakeFiles/re
 #############################################
 # Order-only phony target for thread_test
 
-build cmake_object_order_depends_target_thread_test: phony || cmake_object_order_depends_target_logConfig cmake_object_order_depends_target_my_thread
+build cmake_object_order_depends_target_thread_test: phony || cmake_object_order_depends_target_Config cmake_object_order_depends_target_my_thread
 
 build tests/CMakeFiles/thread_test.dir/thread_test.cpp.o: CXX_COMPILER__thread_test_Debug /home/yjc/yjcServer/tests/thread_test.cpp || cmake_object_order_depends_target_thread_test
   DEFINES = -DSPDLOG_COMPILED_LIB
   DEP_FILE = tests/CMakeFiles/thread_test.dir/thread_test.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/yjc/yjcServer/yjcServer/logConfig/include -I/home/yjc/yjcServer/yjcServer/thread/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include
+  INCLUDES = -I/home/yjc/yjcServer/yjcServer/Config/include -I/home/yjc/yjcServer/yjcServer/thread/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include
   OBJECT_DIR = tests/CMakeFiles/thread_test.dir
   OBJECT_FILE_DIR = tests/CMakeFiles/thread_test.dir
 
@@ -243,9 +243,9 @@ build tests/CMakeFiles/thread_test.dir/thread_test.cpp.o: CXX_COMPILER__thread_t
 #############################################
 # Link the executable tests/thread_test
 
-build tests/thread_test: CXX_EXECUTABLE_LINKER__thread_test_Debug tests/CMakeFiles/thread_test.dir/thread_test.cpp.o | ../yjcServer/spdlog/build/libspdlog.a yjcServer/logConfig/liblogConfig.a yjcServer/thread/libmy_thread.a yjcServer/logConfig/liblogConfig.a ../yjcServer/spdlog/build/libspdlog.a || yjcServer/logConfig/liblogConfig.a yjcServer/thread/libmy_thread.a
+build tests/thread_test: CXX_EXECUTABLE_LINKER__thread_test_Debug tests/CMakeFiles/thread_test.dir/thread_test.cpp.o | ../yjcServer/spdlog/build/libspdlog.a yjcServer/Config/libConfig.a yjcServer/thread/libmy_thread.a yjcServer/Config/libConfig.a ../yjcServer/spdlog/build/libspdlog.a || yjcServer/Config/libConfig.a yjcServer/thread/libmy_thread.a
   FLAGS = -g
-  LINK_LIBRARIES = ../yjcServer/spdlog/build/libspdlog.a  yjcServer/logConfig/liblogConfig.a  yjcServer/thread/libmy_thread.a  yjcServer/logConfig/liblogConfig.a  ../yjcServer/spdlog/build/libspdlog.a
+  LINK_LIBRARIES = ../yjcServer/spdlog/build/libspdlog.a  yjcServer/Config/libConfig.a  yjcServer/thread/libmy_thread.a  yjcServer/Config/libConfig.a  ../yjcServer/spdlog/build/libspdlog.a  -lyaml-cpp
   OBJECT_DIR = tests/CMakeFiles/thread_test.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -278,11 +278,11 @@ build tests/rebuild_cache: phony tests/CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build liblogConfig.a: phony yjcServer/logConfig/liblogConfig.a
+build Config: phony yjcServer/Config/libConfig.a
+
+build libConfig.a: phony yjcServer/Config/libConfig.a
 
 build libmy_thread.a: phony yjcServer/thread/libmy_thread.a
-
-build logConfig: phony yjcServer/logConfig/liblogConfig.a
 
 build my_thread: phony yjcServer/thread/libmy_thread.a
 
@@ -310,14 +310,14 @@ build tests/all: phony tests/thread_test
 #############################################
 # Folder: /home/yjc/yjcServer/build/yjcServer
 
-build yjcServer/all: phony yjcServer/thread/all yjcServer/logConfig/all
+build yjcServer/all: phony yjcServer/thread/all yjcServer/Config/all
 
 # =============================================================================
 
 #############################################
-# Folder: /home/yjc/yjcServer/build/yjcServer/logConfig
+# Folder: /home/yjc/yjcServer/build/yjcServer/Config
 
-build yjcServer/logConfig/all: phony yjcServer/logConfig/liblogConfig.a
+build yjcServer/Config/all: phony yjcServer/Config/libConfig.a
 
 # =============================================================================
 
@@ -347,14 +347,14 @@ build /home/yjc/yjcServer/build/CMakeFiles/cmake.verify_globs: VERIFY_GLOBS | /h
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE /home/yjc/yjcServer/build/CMakeFiles/cmake.verify_globs | ../CMakeLists.txt ../tests/CMakeLists.txt ../yjcServer/CMakeLists.txt ../yjcServer/logConfig/CMakeLists.txt ../yjcServer/spdlog/build/spdlogConfig.cmake ../yjcServer/spdlog/build/spdlogConfigTargets.cmake ../yjcServer/spdlog/build/spdlogConfigVersion.cmake ../yjcServer/thread/CMakeLists.txt /home/yjc/yjcServer/build/CMakeFiles/VerifyGlobs.cmake /usr/share/cmake-3.22/Modules/CMakeCInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.22/Modules/CheckCSourceCompiles.cmake /usr/share/cmake-3.22/Modules/CheckIncludeFile.cmake /usr/share/cmake-3.22/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU.cmake /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.22/Modules/FindPackageMessage.cmake /usr/share/cmake-3.22/Modules/FindThreads.cmake /usr/share/cmake-3.22/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.22/Modules/Platform/Linux.cmake /usr/share/cmake-3.22/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCCompiler.cmake CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE /home/yjc/yjcServer/build/CMakeFiles/cmake.verify_globs | ../CMakeLists.txt ../tests/CMakeLists.txt ../yjcServer/CMakeLists.txt ../yjcServer/Config/CMakeLists.txt ../yjcServer/spdlog/build/spdlogConfig.cmake ../yjcServer/spdlog/build/spdlogConfigTargets.cmake ../yjcServer/spdlog/build/spdlogConfigVersion.cmake ../yjcServer/thread/CMakeLists.txt /home/yjc/yjcServer/build/CMakeFiles/VerifyGlobs.cmake /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfigVersion.cmake /usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.74.0/boost_headers-config-version.cmake /usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.74.0/boost_headers-config.cmake /usr/share/cmake-3.22/Modules/CMakeCInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.22/Modules/CheckCSourceCompiles.cmake /usr/share/cmake-3.22/Modules/CheckIncludeFile.cmake /usr/share/cmake-3.22/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU.cmake /usr/share/cmake-3.22/Modules/FindBoost.cmake /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.22/Modules/FindPackageMessage.cmake /usr/share/cmake-3.22/Modules/FindThreads.cmake /usr/share/cmake-3.22/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.22/Modules/Platform/Linux.cmake /usr/share/cmake-3.22/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCCompiler.cmake CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt ../tests/CMakeLists.txt ../yjcServer/CMakeLists.txt ../yjcServer/logConfig/CMakeLists.txt ../yjcServer/spdlog/build/spdlogConfig.cmake ../yjcServer/spdlog/build/spdlogConfigTargets.cmake ../yjcServer/spdlog/build/spdlogConfigVersion.cmake ../yjcServer/thread/CMakeLists.txt /home/yjc/yjcServer/build/CMakeFiles/VerifyGlobs.cmake /usr/share/cmake-3.22/Modules/CMakeCInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.22/Modules/CheckCSourceCompiles.cmake /usr/share/cmake-3.22/Modules/CheckIncludeFile.cmake /usr/share/cmake-3.22/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU.cmake /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.22/Modules/FindPackageMessage.cmake /usr/share/cmake-3.22/Modules/FindThreads.cmake /usr/share/cmake-3.22/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.22/Modules/Platform/Linux.cmake /usr/share/cmake-3.22/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCCompiler.cmake CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../tests/CMakeLists.txt ../yjcServer/CMakeLists.txt ../yjcServer/Config/CMakeLists.txt ../yjcServer/spdlog/build/spdlogConfig.cmake ../yjcServer/spdlog/build/spdlogConfigTargets.cmake ../yjcServer/spdlog/build/spdlogConfigVersion.cmake ../yjcServer/thread/CMakeLists.txt /home/yjc/yjcServer/build/CMakeFiles/VerifyGlobs.cmake /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfigVersion.cmake /usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.74.0/boost_headers-config-version.cmake /usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.74.0/boost_headers-config.cmake /usr/share/cmake-3.22/Modules/CMakeCInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.22/Modules/CheckCSourceCompiles.cmake /usr/share/cmake-3.22/Modules/CheckIncludeFile.cmake /usr/share/cmake-3.22/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU.cmake /usr/share/cmake-3.22/Modules/FindBoost.cmake /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.22/Modules/FindPackageMessage.cmake /usr/share/cmake-3.22/Modules/FindThreads.cmake /usr/share/cmake-3.22/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.22/Modules/Platform/Linux.cmake /usr/share/cmake-3.22/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCCompiler.cmake CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake: phony
 
 
 #############################################

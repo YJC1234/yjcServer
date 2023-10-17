@@ -51,15 +51,15 @@
 					]
 				},
 				{
-					"build" : "yjcServer/logConfig",
-					"jsonFile" : "directory-yjcServer.logConfig-Debug-b4c71fb981393eb19f6f.json",
+					"build" : "yjcServer/Config",
+					"jsonFile" : "directory-yjcServer.Config-Debug-f2f84fd038aced331935.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.22"
 					},
 					"parentIndex" : 1,
 					"projectIndex" : 0,
-					"source" : "yjcServer/logConfig",
+					"source" : "yjcServer/Config",
 					"targetIndexes" : 
 					[
 						0
@@ -106,22 +106,22 @@
 			[
 				{
 					"directoryIndex" : 3,
-					"id" : "logConfig::@0ce798c978bcaa69520e",
-					"jsonFile" : "target-logConfig-Debug-5b35ca5fe9a3ebfef0af.json",
-					"name" : "logConfig",
+					"id" : "Config::@e173d0cbbb68b64ffda4",
+					"jsonFile" : "target-Config-Debug-10322accc99b7cc57007.json",
+					"name" : "Config",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "my_thread::@e67ad7a7d6387b763932",
-					"jsonFile" : "target-my_thread-Debug-49a536175c666f956c6c.json",
+					"jsonFile" : "target-my_thread-Debug-ace0cbd9239a7c224de5.json",
 					"name" : "my_thread",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 4,
 					"id" : "thread_test::@a44f0ac069e85531cdee",
-					"jsonFile" : "target-thread_test-Debug-2a9edff5d7cdd1b4d1ff.json",
+					"jsonFile" : "target-thread_test-Debug-c1728420b525a4e11dd7.json",
 					"name" : "thread_test",
 					"projectIndex" : 0
 				}

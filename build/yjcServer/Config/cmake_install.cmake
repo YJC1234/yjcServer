@@ -1,4 +1,4 @@
-# Install script for directory: /home/yjc/yjcServer/yjcServer/logConfig
+# Install script for directory: /home/yjc/yjcServer/yjcServer/Config
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

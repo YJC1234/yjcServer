@@ -8,7 +8,7 @@
 	"installers" : [],
 	"paths" : 
 	{
-		"build" : "yjcServer/logConfig",
-		"source" : "yjcServer/logConfig"
+		"build" : "yjcServer/Config",
+		"source" : "yjcServer/Config"
 	}
 }

@@ -1,17 +1,17 @@
 [
 {
   "directory": "/home/yjc/yjcServer/build",
-  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/thread/include -I/home/yjc/yjcServer/yjcServer/logConfig/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o -c /home/yjc/yjcServer/yjcServer/thread/src/Thread.cpp",
+  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/thread/include -I/home/yjc/yjcServer/yjcServer/Config/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o -c /home/yjc/yjcServer/yjcServer/thread/src/Thread.cpp",
   "file": "/home/yjc/yjcServer/yjcServer/thread/src/Thread.cpp"
 },
 {
   "directory": "/home/yjc/yjcServer/build",
-  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/logConfig/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o yjcServer/logConfig/CMakeFiles/logConfig.dir/src/LogConfig.cpp.o -c /home/yjc/yjcServer/yjcServer/logConfig/src/LogConfig.cpp",
-  "file": "/home/yjc/yjcServer/yjcServer/logConfig/src/LogConfig.cpp"
+  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/Config/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o yjcServer/Config/CMakeFiles/Config.dir/src/Config.cpp.o -c /home/yjc/yjcServer/yjcServer/Config/src/Config.cpp",
+  "file": "/home/yjc/yjcServer/yjcServer/Config/src/Config.cpp"
 },
 {
   "directory": "/home/yjc/yjcServer/build",
-  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/logConfig/include -I/home/yjc/yjcServer/yjcServer/thread/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o tests/CMakeFiles/thread_test.dir/thread_test.cpp.o -c /home/yjc/yjcServer/tests/thread_test.cpp",
+  "command": "/usr/local/bin/g++ -DSPDLOG_COMPILED_LIB -I/home/yjc/yjcServer/yjcServer/Config/include -I/home/yjc/yjcServer/yjcServer/thread/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include -g -std=gnu++20 -o tests/CMakeFiles/thread_test.dir/thread_test.cpp.o -c /home/yjc/yjcServer/tests/thread_test.cpp",
   "file": "/home/yjc/yjcServer/tests/thread_test.cpp"
 }
 ]

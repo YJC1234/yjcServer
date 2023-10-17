@@ -1,2 +1,2 @@
 add_subdirectory(thread)
-add_subdirectory(logConfig)
+add_subdirectory(Config)
