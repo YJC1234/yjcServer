@@ -1,9 +1,14 @@
 # ninja log v5
 6955	7087	1697618411000178813	tests/thread_test	219881fa4c8af8a9
+2	4655	1697620898950434759	yjcServer/Config/CMakeFiles/Config.dir/src/util.cpp.o	d5f7b3e05b39e98
 3	6590	1697618410504186035	tests/CMakeFiles/thread_test.dir/thread_test.cpp.o	a6893548204759dd
 6902	6955	1697618410868180735	yjcServer/thread/libmy_thread.a	97d3f94af42f39cc
 3	6581	1697618410492186210	yjcServer/thread/CMakeFiles/my_thread.dir/src/Thread.cpp.o	920370188fae5b44
-6845	6902	1697618410816181493	yjcServer/Config/libConfig.a	351a513ef8e38a74
-3	6845	1697618410760182308	yjcServer/Config/CMakeFiles/Config.dir/src/Config.cpp.o	d533bdc2103fe1aa
-0	14	0	/home/yjc/yjcServer/build/CMakeFiles/cmake.verify_globs	7c87c2951c0328bf
+5979	6051	1697620934974350086	yjcServer/Config/libConfig.a	756727f6374f697
+2	5979	1697620934902350241	yjcServer/Config/CMakeFiles/Config.dir/src/Config.cpp.o	d533bdc2103fe1aa
+1	11	0	/home/yjc/yjcServer/build/CMakeFiles/cmake.verify_globs	7c87c2951c0328bf
 0	11	0	/home/yjc/yjcServer/build/CMakeFiles/cmake.verify_globs	7c87c2951c0328bf
+2	4723	1697621153598113265	yjcServer/Config/CMakeFiles/Config.dir/src/util.cpp.o	d5f7b3e05b39e98
+2	6193	1697621155066113031	yjcServer/Config/CMakeFiles/Config.dir/src/Config.cpp.o	d533bdc2103fe1aa
+6194	6268	1697621155138113020	yjcServer/Config/libConfig.a	756727f6374f697
+6268	6421	1697621155294112996	tests/thread_test	219881fa4c8af8a9

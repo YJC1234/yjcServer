@@ -1,13 +1,13 @@
 #include <Config/util.h>
-#include <spdlog.h>
+#include <spdlog/spdlog.h>
 #include <filesystem>
 
 namespace fs = std::filesystem;
 
 namespace yjcServer {
-static void ListAllFile(std::vector<std::string>& files,
-                        const std::string&        path,
-                        const std::string&        subfix) {
+void FSUtil::ListAllFile(std::vector<std::string>& files,
+                         const std::string&        path,
+                         const std::string&        subfix) {
     try {
         auto absolute_path = fs::absolute(path);
         for (const auto& entry :

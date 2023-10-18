@@ -83,8 +83,7 @@ void Config::LoadFromYaml(const YAML::Node& root) {
 }
 
 /// @brief 加载path文件夹中所有配置文件
-void Config::LoadFromConfigDir(const std::string& path,
-                               bool               force = false) {
+void Config::LoadFromConfigDir(const std::string& path, bool force) {
     std::vector<std::string> files;
     // TODO:这里直接将path转化为绝对路径，可能要修改
     FSUtil::ListAllFile(files, path, ".yml");
