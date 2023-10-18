@@ -12,4 +12,7 @@ logs:
             file: /apps/logs/project_name/system.log
           - type: StdoutLogAppender
 servers:
-    - port: 999
+    port: 999
+    vec:
+        - 10
+        - 20

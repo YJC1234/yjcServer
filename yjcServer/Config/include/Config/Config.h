@@ -16,6 +16,7 @@
 #include <unordered_set>
 #include <vector>
 #include <boost/lexical_cast.hpp>
+#include <boost/type_index.hpp>
 
 namespace yjcServer {
 
@@ -387,7 +388,7 @@ public:
 
     /// @brief  返回参数类型名称
     std::string getTypeName() {
-        return typeid(T).name();
+        return boost::typeindex::type_id<T>().pretty_name();
     }
 
     /// @brief 添加变化回调函数
