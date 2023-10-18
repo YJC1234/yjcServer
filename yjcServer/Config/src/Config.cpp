@@ -1,17 +1,27 @@
 #include <Config/Config.h>
-#include <Config/util.h>
+
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/spdlog.h>
 #include <filesystem>
 #include <list>
+
+namespace fs = std::filesystem;
 
 namespace yjcServer {
 
 int def_initSystemLogger = (LogConfig::initSystemLogger(), 0);
 
 void LogConfig::initSystemLogger() {
+    std::string systemLogPath = "logs/system.txt";
+
+    // 在初始化日志系统之前删除现有的日志文件（如果存在）
+    if (fs::exists(systemLogPath)) {
+        fs::remove(systemLogPath);
+    }
+
+    // TODO:绝对路径要改成相对路径！
     auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
-        "logs/system.txt", true);
+        "/home/yjc/yjcServer/logs/system.txt", false);
     auto logger =
         std::make_shared<spdlog::logger>("system_logger", file_sink);
     spdlog::register_logger(logger);
@@ -60,7 +70,6 @@ listAllMember(const std::string& prefix, const YAML::Node& node,
 void Config::LoadFromYaml(const YAML::Node& root) {
     std::list<std::pair<std::string, const YAML::Node>> all_nodes;
     listAllMember("", root, all_nodes);
-
     for (auto& i : all_nodes) {
         std::string key = i.first;
         if (key.empty()) {
@@ -71,7 +80,6 @@ void Config::LoadFromYaml(const YAML::Node& root) {
         if (!var) {
             continue;
         }
-        //这里其实区分意义不大，无论标量与否,fromString都能够解析(已经实现了string与容器间的类型转换)
         if (i.second.IsScalar()) {
             var->fromString(i.second.Scalar());
         } else {
@@ -87,7 +95,6 @@ void Config::LoadFromConfigDir(const std::string& path, bool force) {
     std::vector<std::string> files;
     // TODO:这里直接将path转化为绝对路径，可能要修改
     FSUtil::ListAllFile(files, path, ".yml");
-
     for (auto& i : files) {
         // TODO:time
         try {

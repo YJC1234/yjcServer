@@ -5,7 +5,31 @@ cmake_policy(SET CMP0009 NEW)
 # srcs at tests/CMakeLists.txt:1 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/yjc/yjcServer/tests/*.cpp")
 set(OLD_GLOB
+  "/home/yjc/yjcServer/tests/config_test.cpp"
   "/home/yjc/yjcServer/tests/thread_test.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/home/yjc/yjcServer/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# srcs at yjcServer/Config/CMakeLists.txt:1 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/yjc/yjcServer/yjcServer/Config/include/*.h")
+set(OLD_GLOB
+  "/home/yjc/yjcServer/yjcServer/Config/include/Config/Config.h"
+  "/home/yjc/yjcServer/yjcServer/Config/include/Config/util.h"
+  "/home/yjc/yjcServer/yjcServer/Config/include/Config/yjcServer.h"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/home/yjc/yjcServer/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# srcs at yjcServer/Config/CMakeLists.txt:1 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/yjc/yjcServer/yjcServer/Config/src/*.cpp")
+set(OLD_GLOB
+  "/home/yjc/yjcServer/yjcServer/Config/src/Config.cpp"
+  "/home/yjc/yjcServer/yjcServer/Config/src/util.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

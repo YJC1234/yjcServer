@@ -227,6 +227,40 @@ build yjcServer/Config/rebuild_cache: phony yjcServer/Config/CMakeFiles/rebuild_
 # =============================================================================
 
 # =============================================================================
+# Object build statements for EXECUTABLE target config_test
+
+
+#############################################
+# Order-only phony target for config_test
+
+build cmake_object_order_depends_target_config_test: phony || cmake_object_order_depends_target_Config cmake_object_order_depends_target_my_thread
+
+build tests/CMakeFiles/config_test.dir/config_test.cpp.o: CXX_COMPILER__config_test_Debug /home/yjc/yjcServer/tests/config_test.cpp || cmake_object_order_depends_target_config_test
+  DEFINES = -DSPDLOG_COMPILED_LIB
+  DEP_FILE = tests/CMakeFiles/config_test.dir/config_test.cpp.o.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -I/home/yjc/yjcServer/yjcServer/Config/include -I/home/yjc/yjcServer/yjcServer/thread/include -isystem /home/yjc/yjcServer/yjcServer/spdlog/include
+  OBJECT_DIR = tests/CMakeFiles/config_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/config_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target config_test
+
+
+#############################################
+# Link the executable tests/config_test
+
+build tests/config_test: CXX_EXECUTABLE_LINKER__config_test_Debug tests/CMakeFiles/config_test.dir/config_test.cpp.o | ../yjcServer/spdlog/build/libspdlog.a yjcServer/Config/libConfig.a yjcServer/thread/libmy_thread.a yjcServer/Config/libConfig.a ../yjcServer/spdlog/build/libspdlog.a || yjcServer/Config/libConfig.a yjcServer/thread/libmy_thread.a
+  FLAGS = -g
+  LINK_LIBRARIES = ../yjcServer/spdlog/build/libspdlog.a  yjcServer/Config/libConfig.a  yjcServer/thread/libmy_thread.a  yjcServer/Config/libConfig.a  ../yjcServer/spdlog/build/libspdlog.a  -lyaml-cpp
+  OBJECT_DIR = tests/CMakeFiles/config_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = tests/config_test
+  TARGET_PDB = config_test.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target thread_test
 
 
@@ -288,6 +322,8 @@ build tests/rebuild_cache: phony tests/CMakeFiles/rebuild_cache.util
 
 build Config: phony yjcServer/Config/libConfig.a
 
+build config_test: phony tests/config_test
+
 build libConfig.a: phony yjcServer/Config/libConfig.a
 
 build libmy_thread.a: phony yjcServer/thread/libmy_thread.a
@@ -311,7 +347,7 @@ build all: phony yjcServer/all tests/all
 #############################################
 # Folder: /home/yjc/yjcServer/build/tests
 
-build tests/all: phony tests/thread_test
+build tests/all: phony tests/config_test tests/thread_test
 
 # =============================================================================
 

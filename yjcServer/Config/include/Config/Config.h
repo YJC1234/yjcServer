@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Config/util.h>
 #include <spdlog/spdlog.h>
 #include <yaml-cpp/yaml.h>
 #include <functional>
@@ -80,6 +81,7 @@ protected:
 /// @tparam T 目标类型
 template <class F, class T>
 class LexicalCast {
+public:
     /// @brief 类型转换
     /// @param v 源类型
     /// @return v转换后的目标类型
@@ -93,6 +95,7 @@ class LexicalCast {
 /// @tparam T
 template <class T>
 class LexicalCast<std::string, std::vector<T>> {
+public:
     std::vector<T> operator()(const std::string& v) {
         YAML::Node        node = YAML::Load(v);
         std::vector<T>    vec;
@@ -109,6 +112,7 @@ class LexicalCast<std::string, std::vector<T>> {
 /// @brief 类型转换模板类片特化(std::vector<T> 转换成 YAML String)
 template <class T>
 class LexicalCast<std::vector<T>, std::string> {
+public:
     std::string operator()(const std::vector<T>& v) {
         YAML::Node node(YAML::NodeType::Sequence);
         for (auto& i : v) {
@@ -123,6 +127,7 @@ class LexicalCast<std::vector<T>, std::string> {
 /// @brief 类型转换模板偏特化(yaml string转化为list<T>)
 template <class T>
 class LexicalCast<std::string, std::list<T>> {
+public:
     std::list<T> operator()(const std::string& v) {
         YAML::Node        node = YAML::Load(v);
         std::list<T>      vec;
@@ -139,6 +144,7 @@ class LexicalCast<std::string, std::list<T>> {
 /// @brief 模板类型偏特化（list<T>转化为yaml string)
 template <class T>
 class LexicalCast<std::list<T>, std::string> {
+public:
     std::string operator()(const std::list<T>& v) {
         YAML::Node node(YAML::NodeType::Sequence);
         for (auto& i : v) {
@@ -316,6 +322,7 @@ public:
 template <class T, class FromStr = LexicalCast<std::string, T>,
           class ToStr = LexicalCast<T, std::string>>
 class ConfigVar : public ConfigVarBase {
+public:
     using on_change_cb =
         std::function<void(const T& old_value, const T& new_value)>;
 

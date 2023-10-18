@@ -1,4 +1,4 @@
-file(GLOB_RECURSE srcs CMAKE_CONFIGURE_DEPENDS src/*.cpp include/*.h)
+file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp include/*.h)
 
 find_package(Boost REQUIRED)
 
