@@ -20,8 +20,14 @@ namespace yjcServer {
 
 class LogConfig {
 public:
-    static void initSystemLogging();
+    static void initSystemLogger();
 };
+
+/*
+ * ---------------------------------------
+ * ----------------配置模块----------------
+ *----------------------------------------
+ */
 
 /// @brief 配置变量基类
 class ConfigVarBase {
@@ -53,7 +59,7 @@ public:
     virtual std::string toString() = 0;
 
     /// @brief 从字符串初始化值
-    virtual bool fromString() = 0;
+    virtual bool fromString(const std::string&) = 0;
 
     /// @brief 返回配置参数的类型名称
     virtual std::string getTypeName() = 0;
@@ -299,6 +305,7 @@ public:
 /*
  *------------------------------------------------------------
  *------------------------------------------------------------
+ *-----------------------------------------------------------
  */
 
 /// @brief 配置参数模板子类,保存对应类型的参数值
@@ -418,7 +425,8 @@ public:
     Lookup(const std::string& name, const T& default_value,
            const std::string& description = "") {
         std::unique_lock<std::shared_mutex> lock(GetMutex());
-        auto                                it = getDatas().find(name);
+
+        auto it = GetDatas().find(name);
         if (it != GetDatas().end()) {
             auto tmp = std::dynamic_pointer_cast<ConfigVar<T>>(it->second);
             if (tmp) {
@@ -428,7 +436,7 @@ public:
             } else {
                 spdlog::get("system_logger")
                     ->error("Lookup name = {} exists but type not {} "
-                            "realtype = {}, {}",
+                            "realtype = {}, real is {}",
                             name, typeid(T).name(),
                             it->second->getTypeName(),
                             it->second->toString());
@@ -440,7 +448,7 @@ public:
                 "abcdefghikjlmnopqrstuvwxyz._0123456789") !=
             std::string::npos) {
             spdlog::error("Lookup name:{} is not valid.", name);
-            thorw std::invalid_argument(name);
+            throw std::invalid_argument(name);
         }
 
         typename std::shared_ptr<ConfigVar<T>> v(
@@ -449,7 +457,49 @@ public:
         return v;
     }
 
-    // TODO:加载，遍历配置项xx
+    /// @brief 查找name对应的配置参数，没有找到则返回nullptr
+    /// @tparam T 类型
+    /// @param name 名称
+    template <class T>
+    static typename std::shared_ptr<ConfigVar<T>>
+    Lookup(const std::string& name) {
+        std::shared_lock<std::shared_mutex> lock(GetMutex());
+
+        auto it = GetDatas().find(name);
+        if (it == GetDatas().end()) {
+            return nullptr;
+        }
+        auto tmp = std::dynamic_pointer_cast<ConfigVar<T>>(it->second);
+        if (tmp) {
+            spdlog::get("system_logger")
+                ->info("Lookup name = {} exists.", name);
+            return tmp;
+        }
+        spdlog::get("system_logger")
+            ->error("Lookup name = {} exists but type not {} "
+                    "realtype = {}, real is {}",
+                    name, typeid(T).name(), it->second->getTypeName(),
+                    it->second->toString());
+        return nullptr;
+    }
+
+    /// @brief 从YAML::Node初始化配置模块
+    static void LoadFromYaml(const YAML::Node& root);
+
+    /// @brief 加载path文件夹中所有配置文件
+    /// @param force
+    static void LoadFromConfigDir(const std::string& path,
+                                  bool               force = false);
+
+    /// @brief 查找配置参数，返回配置参数基类
+    /// @param name 配置参数名称
+    static std::shared_ptr<ConfigVarBase>
+    LookupBase(const std::string& name);
+
+    /// @brief 遍历模块中所有配置项
+    /// @param cb 配置项回调函数
+    static void
+    Visit(std::function<void(std::shared_ptr<ConfigVarBase>)> cb);
 
 private:
     /// @brief 返回所有配置项(单例模式)
