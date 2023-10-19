@@ -20,11 +20,6 @@
 
 namespace yjcServer {
 
-class LogConfig {
-public:
-    static void initSystemLogger();
-};
-
 /*
  * ---------------------------------------
  * ----------------配置模块----------------
@@ -324,6 +319,8 @@ template <class T, class FromStr = LexicalCast<std::string, T>,
           class ToStr = LexicalCast<T, std::string>>
 class ConfigVar : public ConfigVarBase {
 public:
+    using ptr = std::shared_ptr<ConfigVar<T>>;
+
     using on_change_cb =
         std::function<void(const T& old_value, const T& new_value)>;
 

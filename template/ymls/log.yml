@@ -1,18 +1,21 @@
-logs:
-    - name: root
-      level: info
-      appenders:
-          - type: FileLogAppender
-            file: /apps/logs/project_name/root.log
-          - type: StdoutLogAppender
-    - name: system
-      level: info
-      appenders:
-          - type: FileLogAppender
-            file: /apps/logs/project_name/system.log
-          - type: StdoutLogAppender
-servers:
-    port: 999
-    vec:
-        - 10
-        - 20
+loggers:
+  - name: system_logger
+    level: info
+    sinks:
+      - type: stdout_sink_mt
+        pattern: "%Y-%m-%d %H:%M:%S.%e [%l] [%n] %v"
+      - type: rotating_file_sink_mt
+        filename: logs/system.log
+        max_files: 5
+        max_size: 10485760 # 10 MB
+  - name: task_logger
+    level: debug
+    sinks:
+      - type: rotating_file_sink_mt
+        filename: logs/task.log
+        max_files: 5
+        max_size: 10485760 # 10 MB
+        pattern: "%Y-%m-%d %H:%M:%S.%e [%l] [%n] %v"
+global:
+  async: true
+  thread_pool_size: 5

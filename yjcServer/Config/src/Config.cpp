@@ -5,27 +5,7 @@
 #include <filesystem>
 #include <list>
 
-namespace fs = std::filesystem;
-
 namespace yjcServer {
-
-int def_initSystemLogger = (LogConfig::initSystemLogger(), 0);
-
-void LogConfig::initSystemLogger() {
-    std::string systemLogPath = "logs/system.txt";
-
-    // 在初始化日志系统之前删除现有的日志文件（如果存在）
-    if (fs::exists(systemLogPath)) {
-        fs::remove(systemLogPath);
-    }
-
-    // TODO:绝对路径要改成相对路径！
-    auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
-        "/home/yjc/yjcServer/logs/system.txt", false);
-    auto logger =
-        std::make_shared<spdlog::logger>("system_logger", file_sink);
-    spdlog::register_logger(logger);
-}
 
 /*
  * --------------------------------------------------

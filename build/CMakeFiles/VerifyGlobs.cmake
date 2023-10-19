@@ -17,6 +17,7 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/yjc/yjcServer/yjcServer/Config/include/*.h")
 set(OLD_GLOB
   "/home/yjc/yjcServer/yjcServer/Config/include/Config/Config.h"
+  "/home/yjc/yjcServer/yjcServer/Config/include/Config/LogConfig.h"
   "/home/yjc/yjcServer/yjcServer/Config/include/Config/util.h"
   "/home/yjc/yjcServer/yjcServer/Config/include/Config/yjcServer.h"
   )
@@ -29,6 +30,7 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/yjc/yjcServer/yjcServer/Config/src/*.cpp")
 set(OLD_GLOB
   "/home/yjc/yjcServer/yjcServer/Config/src/Config.cpp"
+  "/home/yjc/yjcServer/yjcServer/Config/src/LogConfig.cpp"
   "/home/yjc/yjcServer/yjcServer/Config/src/util.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

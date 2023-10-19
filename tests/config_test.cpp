@@ -3,17 +3,15 @@
 
 using namespace yjcServer;
 
-ConfigVar<std::vector<int>>::ptr g_int_config =
-    Config::Lookup<std::vector<int>>("servers.vec", std::vector<int>{1},
-                                     "system.port");
+auto g_logConfigInitializer = LogConfigInitializer::instance();
 
 int main() {
     Config::Visit([](std::shared_ptr<ConfigVarBase> v) {
-        spdlog::info("name:{}, val:{}", v->getName(), v->toString());
+        spdlog::info(" name:{}\n val:{}", v->getName(), v->toString());
     });
-    Config::LoadFromConfigDir("/home/yjc/yjcServer/template/ymls/");
+    spdlog::info("after");
     Config::Visit([](std::shared_ptr<ConfigVarBase> v) {
-        spdlog::info("name:{},type:{}, val:{}", v->getName(),
+        spdlog::info(" name:{}\n type:{}\n val:{}\n", v->getName(),
                      v->getTypeName(), v->toString());
     });
 

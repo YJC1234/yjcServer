@@ -1,3 +1,4 @@
+#include <Config/LogConfig.h>
 #include <Config/yjcServer.h>
 #include <iostream>
 #include <vector>
