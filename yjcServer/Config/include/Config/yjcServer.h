@@ -3,3 +3,8 @@
 #include <Config/LogConfig.h>
 #include <spdlog/spdlog.h>
 #include <thread/Thread.h>
+
+//前置声明
+struct SinkConfig;
+struct LoggerConfig;
+struct GlobalConfig;

@@ -7,9 +7,6 @@ namespace yjcServer {
 
 namespace fs = std::filesystem;
 
-//执行初始化注册工作，单例设计
-inline auto g_logConfigInitializer = LogConfigInitializer::instance();
-
 /// @brief 定义sink的配置结构
 struct SinkConfig {
     std::string type;
@@ -62,19 +59,19 @@ public:
     SinkConfig operator()(const std::string& v) {
         YAML::Node node = YAML::Load(v);
         SinkConfig res;
-        if (node["type"]) {
+        if (node["type"].IsDefined()) {
             res.type = node["type"].as<std::string>();
         }
-        if (node["filename"]) {
+        if (node["filename"].IsDefined()) {
             res.filename = node["filename"].as<std::string>();
         }
-        if (node["max_files"]) {
+        if (node["max_files"].IsDefined()) {
             res.max_files = node["max_files"].as<size_t>();
         }
-        if (node["max_size"]) {
+        if (node["max_size"].IsDefined()) {
             res.max_size = node["max_size"].as<size_t>();
         }
-        if (node["pattern"]) {
+        if (node["pattern"].IsDefined()) {
             res.pattern = node["pattern"].as<std::string>();
         }
         return res;
@@ -105,8 +102,12 @@ public:
     LoggerConfig operator()(const std::string& v) {
         YAML::Node   node = YAML::Load(v);
         LoggerConfig res;
-        res.name = node["name"].as<std::string>();
-        res.level = node["level"].as<std::string>();
+        if (node["name"].IsDefined()) {
+            res.name = node["name"].as<std::string>();
+        }
+        if (node["level"].IsDefined()) {
+            res.level = node["level"].as<std::string>();
+        }
         std::stringstream ss;
         ss << node["sinks"];
         res.sinks =
@@ -138,8 +139,12 @@ public:
     GlobalConfig operator()(const std::string& v) {
         YAML::Node   node = YAML::Load(v);
         GlobalConfig res;
-        res.async = node["async"].as<bool>();
-        res.thread_pool_size = node["thread_pool_size"].as<size_t>();
+        if (node["async"].IsDefined()) {
+            res.async = node["async"].as<bool>();
+        }
+        if (node["thread_pool_size"].IsDefined()) {
+            res.thread_pool_size = node["thread_pool_size"].as<size_t>();
+        }
         return res;
     }
 };
@@ -178,6 +183,13 @@ void LogConfigInitializer::init() {
         "loggers", {}, "logger_configs");
     auto global_configs =
         Config::Lookup<GlobalConfig>("global", {}, "global_configs");
+
+    logger_configs->addListener(
+        [](const std::vector<LoggerConfig>& old_value,
+           const std::vector<LoggerConfig>& new_value) {
+            // TODO:回调，实现加载
+        });
+
     // TODO:绝对路径
     Config::LoadFromConfigDir("/home/yjc/yjcServer/template/ymls/");
 }
