@@ -4,6 +4,8 @@
 using namespace yjcServer;
 
 int main() {
-    Config::Visit([](ConfigVarBase::ptr v) { spdlog::info("dinner"); });
+    LogConfigInitializer::instance();
+    Config::Visit(
+        [](ConfigVarBase::ptr v) { spdlog::info("\n{}", v->getName()); });
     return 0;
 }

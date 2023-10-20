@@ -355,9 +355,10 @@ public:
         }
         catch (std::exception& e) {
             spdlog::get("system_logger")
-                ->error("Configure var::fromString exception : {}, convert "
-                        "{} to string name {}",
-                        e.what(), typeid(T).name(), m_name);
+                ->error(
+                    "Configure var::fromString exception : {}\n, convert "
+                    "{} to string name {}",
+                    e.what(), typeid(T).name(), m_name);
         }
         return false;
     }
