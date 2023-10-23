@@ -1,4 +1,7 @@
 #pragma once
+#include <spdlog/spdlog.h>
+#include <cassert>
+#include <source_location>
 #include <string>
 #include <vector>
 
@@ -15,5 +18,30 @@ public:
                             const std::string&        path,
                             const std::string&        subfix);
 };
+
+//----------------------------------断言宏------------------------------------------
+namespace details {
+inline void logError(const std::source_location& loc,
+                     const std::string&          msg) {
+    spdlog::get("system_logger")
+        ->error("Error at:\n filename: {}\nline : {}\nfun : {}\n msg: {}",
+                loc.file_name(), loc.line(), loc.function_name(), msg);
+}
+
+inline void assertWithLog(
+    bool condition, const std::string& msg,
+    const std::source_location loc = std::source_location::current()) {
+    if (!condition) [[unlikely]] {
+        logError(loc, msg);
+        assert(condition);
+    }
+}
+
+}  // namespace details
+
+#define YJC_ASSERT(x) yjcServer::details::assertWithLog(x, "ASSERTION: " #x)
+
+#define YJC_ASSERT_MSG(x, msg)                                             \
+    yjcServer::details::assertWithLog(x, "ASSERTION: " #x "\n" msg)
 
 }  // namespace yjcServer

@@ -2,12 +2,11 @@ loggers:
   - name: system_logger
     level: info
     sinks:
-      - type: stdout_color_sink_mt
-        pattern: "%Y-%m-%d %H:%M:%S.%e [%l] [%n] %v"
       - type: rotating_file_sink_mt
         filename: /home/yjc/yjcServer/logs/system.log
         max_files: 5
         max_size: 10485760 # 10 MB
+        pattern: "%Y-%m-%d %H:%M:%S.%e [%l] [%n] %v"
   - name: task_logger
     level: debug
     sinks:

@@ -13,11 +13,11 @@ namespace fs = std::filesystem;
 
 /// @brief 定义sink的配置结构
 struct SinkConfig {
-    std::string type;
-    std::string filename;
-    size_t      max_files;
-    size_t      max_size;
-    std::string pattern;
+    std::string type = "UNKNOWN";
+    std::string filename = "/home/yjc/yjcServer/logs/defaultLog.log";
+    size_t      max_files = 5;
+    size_t      max_size = 1000;
+    std::string pattern = "%Y-%m-%d %H:%M:%S.%e [%l] [%n] %v";
 
     bool operator==(const SinkConfig& other) const {
         return type == other.type && filename == other.filename &&
@@ -86,6 +86,9 @@ struct LoggerConfig {
 
     //从LoggerConfig中解析出Logger
     std::shared_ptr<spdlog::logger> createLogger() const {
+        if (name.empty()) {
+            return nullptr;
+        }
         auto logger = std::make_shared<spdlog::logger>(name);
         logger->set_level(StringToLevel(level));
         std::vector<spdlog::sink_ptr> _sinks;
@@ -94,6 +97,9 @@ struct LoggerConfig {
             _sinks.push_back(sink);
         }
         logger->sinks() = _sinks;
+        if (name == "system_logger") {
+            logger->flush_on(spdlog::level::info);
+        }
         return logger;
     }
 };
@@ -269,6 +275,9 @@ void LogConfigInitializer::init() {
                     //删除临时的logger
                     if (spdlog::get(_loggerConfig.name) != nullptr) {
                         spdlog::drop(_loggerConfig.name);
+                    }
+                    if (newLogger == nullptr) {
+                        continue;
                     }
                     spdlog::register_logger(newLogger);
                     spdlog::get("system_logger")

@@ -74,7 +74,9 @@
         "unordered_set": "cpp",
         "cfenv": "cpp",
         "filesystem": "cpp",
-        "typeindex": "cpp"
+        "typeindex": "cpp",
+        "source_location": "cpp",
+        "cassert": "cpp"
     },
     "C_Cpp.default.compilerPath": "/usr/local/bin/g++"
 }

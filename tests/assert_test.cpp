@@ -1,10 +1,9 @@
 #include <Config/yjcServer.h>
-#include <filesystem>
 
 using namespace yjcServer;
 
 int main() {
     LogConfigInitializer::instance();
-    spdlog::get("system_logger")->info("dinner");
-    return 0;
+    int x = 0;
+    YJC_ASSERT(x == 1);
 }
