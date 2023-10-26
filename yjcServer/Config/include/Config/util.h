@@ -24,7 +24,7 @@ namespace details {
 inline void logError(const std::source_location& loc,
                      const std::string&          msg) {
     spdlog::get("system_logger")
-        ->error("Error at:\n filename: {}\nline : {}\nfun : {}\n msg: {}",
+        ->error("Error at:\n filename: {}\n line : {}\n fun : {}\n {}",
                 loc.file_name(), loc.line(), loc.function_name(), msg);
 }
 

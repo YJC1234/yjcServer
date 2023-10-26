@@ -81,11 +81,11 @@ void Config::LoadFromConfigDir(const std::string& path, bool force) {
             YAML::Node root = YAML::LoadFile(i);
             LoadFromYaml(root);
             spdlog::get("system_logger")
-                ->info("Load ConfigFile = {} OK.", i);
+                ->info("\nLoad ConfigFile = {} OK.", i);
         }
         catch (...) {
             spdlog::get("system_logger")
-                ->error("Load ConfigFile = {} failed.", i);
+                ->error("\nLoad ConfigFile = {} failed.", i);
         }
     }
 }

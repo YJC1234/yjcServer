@@ -6,7 +6,7 @@ loggers:
         filename: /home/yjc/yjcServer/logs/system.log
         max_files: 5
         max_size: 10485760 # 10 MB
-        pattern: "%Y-%m-%d %H:%M:%S.%e [%l] [%n] %v"
+        pattern: "%Y-%m-%d %H:%M:%S.%e [%l] %v"
   - name: task_logger
     level: debug
     sinks:

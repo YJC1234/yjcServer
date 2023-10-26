@@ -27,6 +27,12 @@ void Thread::SetName(const std::string& name) {
     t_thread_name = name;
 }
 //----构造------
+Thread::Thread(std::function<void()> cb)
+    : m_cb(std::move(cb)),
+      m_name("id{" + std::to_string(GetThreadId()) + "}") {
+    init();
+}
+
 Thread::Thread(std::function<void()> cb, const std::string& name)
     : m_cb(std::move(cb)),
       m_name(name.empty() ? "UNKNOWN" : std::move(name)) {

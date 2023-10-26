@@ -8,7 +8,7 @@
             "name": "(gdb) 启动",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/tests/config_test",
+            "program": "${workspaceFolder}/build/tests/threadpool_test",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
