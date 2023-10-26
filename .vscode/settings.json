@@ -76,7 +76,9 @@
         "filesystem": "cpp",
         "typeindex": "cpp",
         "source_location": "cpp",
-        "cassert": "cpp"
+        "cassert": "cpp",
+        "coroutine": "cpp"
     },
-    "C_Cpp.default.compilerPath": "/usr/local/bin/g++"
+    "C_Cpp.default.compilerPath": "/usr/local/bin/g++",
+    "C_Cpp.errorSquiggles": "enabled"
 }

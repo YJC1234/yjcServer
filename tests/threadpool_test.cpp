@@ -24,4 +24,5 @@ int main() {
         pool->push_task([] { fun1(); });
     }
     delete pool;
+    spdlog::info("count = {}.", count);
 }
