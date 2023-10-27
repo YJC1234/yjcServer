@@ -109,6 +109,10 @@ public:
         return final_waiter{};
     }
 
+    void unhandled_exception() const noexcept {
+        return std::terminate();
+    }
+
     std::optional<std::coroutine_handle<>>& get_calling_handle() {
         return m_calling_handle;
     }
