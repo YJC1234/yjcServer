@@ -1,5 +1,5 @@
 #pragma once
-#include <common.h>
+#include <Config/common.h>
 #include <thread/ThreadPool.h>
 #include <coroutine>
 
@@ -26,5 +26,7 @@ public:
     };  // class schedule_awaiter
 
     schedule_awaiter schedule();
+
+    ThreadPool* get() const;
 };
 }  // namespace yjcServer

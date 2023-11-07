@@ -37,8 +37,8 @@ struct SinkConfig {
         } else if (type == "stderr_color_sink_mt") {
             sink = std::make_shared<spdlog::sinks::stderr_color_sink_mt>();
         } else if (type == "daily_file_sink_mt") {
-            sink = std::make_shared<spdlog::sinks::daily_file_sink_mt>(
-                filename, 0, 0);
+            sink = std::make_shared<spdlog::sinks::daily_file_sink_mt>(filename,
+                                                                       0, 0);
         } else if (type == "null_sink_st") {
             sink = std::make_shared<spdlog::sinks::null_sink_st>();
         } else {
@@ -65,8 +65,7 @@ struct LoggerConfig {
     /// @brief 从string中解析出level
     static spdlog::level::level_enum
     StringToLevel(const std::string& level_str) {
-        static const std::unordered_map<std::string,
-                                        spdlog::level::level_enum>
+        static const std::unordered_map<std::string, spdlog::level::level_enum>
             level_map = {{"trace", spdlog::level::trace},
                          {"debug", spdlog::level::debug},
                          {"info", spdlog::level::info},
@@ -242,9 +241,9 @@ public:
 /*
  *---------------------------------全局对象--------------------------------------
  */
-auto logger_configs = Config::Lookup<std::vector<LoggerConfig>>(
-    "loggers", {}, "logger_configs");
-auto global_configs =
+static auto logger_configs =
+    Config::Lookup<std::vector<LoggerConfig>>("loggers", {}, "logger_configs");
+static auto global_configs =
     Config::Lookup<GlobalConfig>("global", {}, "global_configs");
 
 /*
@@ -252,56 +251,60 @@ auto global_configs =
  */
 
 void LogConfigInitializer::init() {
-    fs::path logpath("/home/yjc/yjcServer/logs/system.log");
-    if (fs::exists(logpath)) {  //删掉上一次运行的日志文件
-        fs::remove(logpath);
+    //删除所有旧日志
+    fs::path logpath("/home/yjc/yjcServer/logs");
+    if (fs::exists(logpath) && fs::is_directory(logpath)) {
+        for (const auto& entry : fs::directory_iterator(logpath)) {
+            if (entry.path().extension() == ".log") {
+                fs::remove(entry.path());
+            }
+        }
     }
     //临时
-    auto logger =
-        spdlog::basic_logger_mt("system_logger", logpath.string());
+    auto logger = spdlog::basic_logger_mt(
+        "system_logger", "/home/yjc/yjcServer/logs/system.log");
 
     //使用回调实现日志变更时的加载
-    logger_configs->addListener(
-        [](const std::vector<LoggerConfig>& old_value,
-           const std::vector<LoggerConfig>& new_value) {
-            spdlog::get("system_logger")->info("on_logger_conf_changed");
-            //添加或修改新的
-            for (auto& _loggerConfig : new_value) {
-                auto it = std::find(old_value.begin(), old_value.end(),
-                                    _loggerConfig);
-                if (it == old_value.end()) {
-                    //创建新的logger
-                    auto newLogger = _loggerConfig.createLogger();
-                    //删除临时的logger
-                    if (spdlog::get(_loggerConfig.name) != nullptr) {
-                        spdlog::drop(_loggerConfig.name);
-                    }
-                    if (newLogger == nullptr) {
-                        continue;
-                    }
-                    spdlog::register_logger(newLogger);
-                    spdlog::get("system_logger")
-                        ->info("\nNew logger create!\nHere is its "
-                               "information:{}\n",
-                               LexicalCast<LoggerConfig, std::string>()(
-                                   _loggerConfig));
-                } else {
-                    if (*it != _loggerConfig) {
-                        //修改已经存在的logger
-                        auto reLogger = _loggerConfig.createLogger();
-                        spdlog::register_logger(reLogger);
-                    }
-                }
-            }
-            //删除旧的
-            for (auto& _loggerConfig : old_value) {
-                auto it = std::find(new_value.begin(), new_value.end(),
-                                    _loggerConfig);
-                if (it == new_value.end()) {  //旧的多余，删除
+    logger_configs->addListener([](const std::vector<LoggerConfig>& old_value,
+                                   const std::vector<LoggerConfig>& new_value) {
+        spdlog::get("system_logger")->info("on_logger_conf_changed");
+        //添加或修改新的
+        for (auto& _loggerConfig : new_value) {
+            auto it =
+                std::find(old_value.begin(), old_value.end(), _loggerConfig);
+            if (it == old_value.end()) {
+                //创建新的logger
+                auto newLogger = _loggerConfig.createLogger();
+                //删除临时的logger
+                if (spdlog::get(_loggerConfig.name) != nullptr) {
                     spdlog::drop(_loggerConfig.name);
                 }
+                if (newLogger == nullptr) {
+                    continue;
+                }
+                spdlog::register_logger(newLogger);
+                spdlog::get("system_logger")
+                    ->info("\nNew logger create!\nHere is its "
+                           "information:{}\n",
+                           LexicalCast<LoggerConfig, std::string>()(
+                               _loggerConfig));
+            } else {
+                if (*it != _loggerConfig) {
+                    //修改已经存在的logger
+                    auto reLogger = _loggerConfig.createLogger();
+                    spdlog::register_logger(reLogger);
+                }
             }
-        });
+        }
+        //删除旧的
+        for (auto& _loggerConfig : old_value) {
+            auto it =
+                std::find(new_value.begin(), new_value.end(), _loggerConfig);
+            if (it == new_value.end()) {  //旧的多余，删除
+                spdlog::drop(_loggerConfig.name);
+            }
+        }
+    });
 
     // TODO:绝对路径
     Config::LoadFromConfigDir("/home/yjc/yjcServer/template/ymls/");

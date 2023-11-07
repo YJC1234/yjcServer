@@ -7,8 +7,7 @@ long long         count = 0;
 std::shared_mutex rwmutex;
 
 void fun1() {
-    spdlog::info("name:{},this.name{}; id:{};",
-                 yjcServer::Thread::GetName(),
+    spdlog::info("name:{},this.name{}; id:{};", yjcServer::Thread::GetName(),
                  yjcServer::Thread::GetThis()->getName(),
                  yjcServer::Thread::GetThis()->getId());
     std::unique_lock<std::shared_mutex> lock(rwmutex);
@@ -23,6 +22,7 @@ int main() {
     for (size_t i = 0; i < 5; i++) {
         pool->push_task([] { fun1(); });
     }
+    pool->print(spdlog::get("task_logger"));
     delete pool;
     spdlog::info("count = {}.", count);
 }

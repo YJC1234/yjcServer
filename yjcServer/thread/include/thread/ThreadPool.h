@@ -10,11 +10,11 @@ public:
     using Lock = std::unique_lock<std::mutex>;
 
 private:
-    std::vector<std::shared_ptr<yjcServer::Thread>> m_threads =
-        {};                                          //工作线程
+    std::vector<std::shared_ptr<yjcServer::Thread>> m_threads = {};  //工作线程
+    std::vector<pid_t>                m_threadIds = {};              //线程id
     std::queue<std::function<void()>> m_tasks = {};  //任务队列
     size_t m_running_tasks_count = 0;  //正在运行的任务数量
-    size_t m_threads_count;            //工作线程数量
+    size_t m_threads_count = 0;        //工作线程数量
     bool   m_workers_running = false;  //线程池是否正在运行
     bool   m_waiting = false;          //线程池退出前等待
     std::condition_variable m_task_available_cv = {};
@@ -56,9 +56,8 @@ private:
     void wait_for_tasks() {
         Lock lock(m_mutex);
         m_waiting = true;
-        m_task_done_cv.wait(lock, [this] {
-            return !m_running_tasks_count && m_tasks.empty();
-        });
+        m_task_done_cv.wait(
+            lock, [this] { return !m_running_tasks_count && m_tasks.empty(); });
         m_waiting = false;
     }
     void threads_destroy() {
@@ -83,10 +82,10 @@ public:
             auto thread =
                 std::make_shared<yjcServer::Thread>([this] { worker(); });
             m_threads.emplace_back(thread);
+            m_threadIds.push_back(thread->getId());
         }
         spdlog::get("task_logger")
-            ->info("\nThreadPool启动! thread_count = {}\n;",
-                   m_threads_count);
+            ->debug("\nThreadPool启动! thread_count = {}\n;", m_threads_count);
     }
 
     ~ThreadPool() {
@@ -101,8 +100,23 @@ public:
             m_tasks.push(
                 std::bind(std::forward<F>(task), std::forward<A>(args)...));
         }
-        spdlog::get("task_logger")->info("[ThreadPool] new task add!");
+        spdlog::get("task_logger")->debug("[ThreadPool] new task add!");
         m_task_available_cv.notify_one();
+    }
+
+    void print(std::shared_ptr<spdlog::logger> logger) {
+        std::string ids;
+        for (size_t i = 0; i < m_threads_count; ++i) {
+            ids += std::to_string(m_threadIds[i]);
+            if (i != m_threads_count - 1) {
+                ids += ", ";
+            }
+        }
+
+        logger->info("\nthreads num = {}\n"
+                     "running task num = {}\n"
+                     "threads id : {}\n",
+                     m_threads_count, m_running_tasks_count, ids);
     }
 
 };  // class ThreadPool

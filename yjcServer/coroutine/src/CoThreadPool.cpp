@@ -20,4 +20,8 @@ CoThreadPool::schedule_awaiter CoThreadPool::schedule() {
     return schedule_awaiter{*m_pool};
 }
 
+ThreadPool* CoThreadPool::get() const {
+    return m_pool.get();
+}
+
 };  // namespace yjcServer
