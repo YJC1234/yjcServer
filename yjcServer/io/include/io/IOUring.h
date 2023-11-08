@@ -1,5 +1,6 @@
 #pragma once
 #include <liburing.h>
+#include <span>
 
 namespace yjcServer {
 
@@ -27,11 +28,20 @@ public:
     /// @brief 获取原始的io_uring
     io_uring* get() const;
 
-    /// @brief 注册一个共享的缓冲区环，用于提供。可以避免每次提交任务前都必须手动分配缓冲区，如果大量任务会导致内存紧张的问题。
-    /// @note  如果请求准备接收数据，并且在SQE 标志中设置了 IOSQE_BUFFER_SELECT，则选择一个缓冲区。
-    /// @param nentries 缓冲区环中请求的条目数
-    /// @return 如果注册成功，返回io_uring_buf_ring*，否则返回nullptr
-    io_uring_buf_ring* setup_buf_ring(unsigned int nentries = 64);
-
+    /// @brief 内核注册io_uring_buf_ring，用于提供缓冲区
+    /// @param buf_ring 要注册的缓冲区
+    /// @param buf_ring_list
+    /// @param buf_ring_size
+    /// @return
+    void setup_buf_ring(io_uring_buf_ring*           buf_ring,
+                        std::span<std::vector<char>> buf_ring_list,
+                        unsigned int                 buf_ring_size);
+    /// @brief 将buf_id对应的缓冲区归还给内核
+    /// @param buf_ring buf_ring实例
+    /// @param buf 要归还的缓冲区实例
+    /// @param buf_id 要归还的缓冲区id
+    /// @param buf_ring_size 缓冲区个数
+    void add_buf(io_uring_buf_ring* buf_ring, std::span<char> buf,
+                 const unsigned int buf_id, const unsigned int buf_ring_size);
 };
 }  // namespace yjcServer

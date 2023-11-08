@@ -69,6 +69,8 @@ public:
 
     };  // class task_awaiter
 
+    /// @brief 重载task的co_await,这样可以co_awiat
+    /// task,但是具体suspend等逻辑放在task_awaiter中处理
     task_awaiter operator co_await() {
         return task_awaiter(m_handle);
     }

@@ -1,9 +1,11 @@
 #pragma once
 #include <liburing.h>
+#include <bitset>
 #include <memory>
 #include <span>
 #include <vector>
-#include <boost/dynamic_bitset.hpp>
+
+#define MAX_BUFFER_RING_SIZE 65536
 
 namespace yjcServer {
 //环形缓冲区
@@ -11,7 +13,7 @@ class Buffer_ring {
 private:
     std::unique_ptr<io_uring_buf_ring> m_buf_ring;
     std::vector<std::vector<char>>     m_buf_list;
-    boost::dynamic_bitset<>            m_borrowed_buf_set;
+    std::bitset<MAX_BUFFER_RING_SIZE>  m_borrowed_buf_set;
 
 public:
     /// @brief 线程单例
