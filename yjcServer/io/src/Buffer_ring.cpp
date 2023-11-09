@@ -30,7 +30,7 @@ void Buffer_ring::register_buf_ring(const unsigned int buf_ring_size,
 std::span<char> Buffer_ring::borrow_buf(const unsigned int buf_id,
                                         const size_t       size) {
     if (m_borrowed_buf_set[buf_id]) {
-        spdlog::get("task_logger")
+        spdlog::get("system_logger")
             ->error(
                 "[Buffer_ring:borrow_buf]: the buf_id:{} is already borrow!",
                 buf_id);

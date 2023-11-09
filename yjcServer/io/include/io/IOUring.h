@@ -1,6 +1,7 @@
 #pragma once
 #include <liburing.h>
 #include <span>
+#include <vector>
 
 namespace yjcServer {
 
